@@ -27,6 +27,18 @@ public class AtendimentoDAO extends AbstractDAO{
 
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Atendimento> listarPorTerminalComLimite(Atendimento at, int limite){
+
+		try {
+			Query query = this.entityManager.createQuery("FROM Atendimento s WHERE s.terminal =:param1 ORDER BY s.dataRegistro ASC");
+			query.setParameter("param1", at.getTerminal());
+			return query.setMaxResults(limite).getResultList();
+		} catch (Exception e) {
+			return new ArrayList<Atendimento>();
+		}
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Atendimento> listarPorSolucao(Solucao s){

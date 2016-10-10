@@ -71,7 +71,7 @@ public class AtendimentoController  extends AbstractCrudController{
 			Pattern pattern;
 			Matcher matcher;
 
-			pattern = Pattern.compile("/(\\w{1})\\d{7}/g");
+			pattern = Pattern.compile("(\\w{1})\\d{7}");
 			matcher = pattern.matcher(a.getLoginOperador());
 
 			if(!matcher.matches()){

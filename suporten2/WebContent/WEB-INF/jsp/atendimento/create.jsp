@@ -154,6 +154,13 @@
 			
 			</div>
 		</div>
+		
+		<div class="panel panel-default infos hide">
+			<div class="panel-heading">Atendimentos realizados para mesmo Terminal/Id Fibra/ Instância</div>
+			<div class="panel-body" id="atendimentos">
+			
+			</div>
+		</div>
 	</div>
 
 
@@ -277,6 +284,29 @@
 
 	         $(".infos").removeClass("hide");
 
+		});
+
+		$("#terminal").change(function(){
+			var terminal = $(this).val();
+
+			$.ajax({
+				type: 'GET',
+				url: '${pageContext.request.contextPath}/json/atendimentos/'+terminal,
+				success: function(atends){
+					var ats = '';
+					for(i=0; i < atends.list.length; i++){
+						var ledata = new Date(atends.list[i].dataRegistro);
+						var data = ledata.getDate()+"/"+ledata.getMonth()+"/"+ledata.getFullYear()+" "+ledata.getHours()+":"+ledata.getMinutes();
+						ats += "Operador: "+ atends.list[i].loginOperador+
+								"<br> Suporte: " + atends.list[i].loginRegistro + 
+								"<br> Solução: " + atends.list[i].solucao.nome +
+								"<br> Observação: "+ atends.list[i].observacao +
+								"<br> Data: "+ data + "<hr>";
+					}
+					$("#atendimentos").html(ats);
+				}
+			});
+			
 		});
 	});
 </script>

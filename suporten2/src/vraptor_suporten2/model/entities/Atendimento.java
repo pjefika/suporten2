@@ -22,7 +22,7 @@ public class Atendimento {
 	@GeneratedValue
 	private Integer id; 
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull(message="Campo obrigatório")
 	private Solucao solucao;
 	

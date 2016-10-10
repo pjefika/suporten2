@@ -43,7 +43,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 				
-					<li><a href="#">Home</a></li>
+					<li><a href="${linkTo[HomeController].index}">Home</a></li>
 					<c:if test="${not empty sessionUsuarioEfika.usuario.login}">
 						<c:if test="${sessionUsuarioEfika.admin}">
 							<li><a href="${linkTo[AtendimentoController].create}">Atendimento</a></li>
@@ -51,6 +51,8 @@
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Administração <span class="caret"></span></a>
 								<ul class="dropdown-menu">
+									<li class="dropdown-header">Relatórios</li>
+									<li><a href="${linkTo[RelatorioController].create}">Base</a></li>
 									<li role="separator" class="divider"></li>
 									<li class="dropdown-header">Cadastros</li>
 									<li><a href="${linkTo[RedeController].list}">Rede</a></li>

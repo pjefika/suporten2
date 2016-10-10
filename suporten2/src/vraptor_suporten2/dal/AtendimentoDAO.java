@@ -2,6 +2,7 @@ package vraptor_suporten2.dal;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 

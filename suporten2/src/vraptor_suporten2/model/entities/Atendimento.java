@@ -3,6 +3,7 @@ package vraptor_suporten2.model.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -21,7 +22,7 @@ public class Atendimento {
 	@GeneratedValue
 	private Integer id; 
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull(message="Campo obrigatório")
 	private Solucao solucao;
 	

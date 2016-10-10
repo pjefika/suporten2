@@ -12,7 +12,7 @@
 
 
 <div class="page-header">
-	<h2>Atendimento</h2>
+	<h2>Exportar Base</h2>
 </div>
 <div class="row">
 	<div class="col-xs-8">

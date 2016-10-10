@@ -23,10 +23,10 @@
 	src="${pageContext.request.contextPath}/resources/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	
 
-
 <decorator:head/>
 </head>
 <body>
+	<!-- Jóvi -->
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">

@@ -1,4 +1,4 @@
-package vraptor_suporten2.model;
+package vraptor_suporten2.model.viewmodel;
 
 import java.util.Date;
 import java.util.List;

@@ -3,7 +3,8 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <link
-	href="${pageContext.request.contextPath}/resources/datepicker/css/datepicker.css" rel="stylesheet" />
+	href="${pageContext.request.contextPath}/resources/datepicker/css/datepicker.css"
+	rel="stylesheet" />
 
 <script
 	src="${pageContext.request.contextPath}/resources/datepicker/js/bootstrap-datepicker.js"></script>
@@ -15,15 +16,14 @@
 </div>
 <div class="row">
 	<div class="col-xs-8">
-		<form action="${linkTo[AtendimentoController].add}" method="post">
-			
+		<form action="${linkTo[RelatorioController].add}" method="post">
+
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="dataInicial">Data Inicial: </label>
-						<input type="text"
+						<label for="dataInicial">Data Inicial: </label> <input type="text"
 							class="form-control datepicker" id="dataInicial"
-							placeholder="Data Inicial" name="r.dataInicio"/>
+							placeholder="Data Inicial" name="r.dataInicio" />
 					</div>
 					<div class="col-md-4" style="margin-top: 30px;">
 						<c:if test="${not empty errors.from('r.dataInicio')}">
@@ -35,13 +35,12 @@
 						</c:if>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-8">
-						<label for="dataIinicial">Data Final: </label>
-						<input type="text"
+						<label for="dataIinicial">Data Final: </label> <input type="text"
 							class="form-control datepicker" id="dataFinal"
-							placeholder="Data Final" name="r.dataFinal"/>
+							placeholder="Data Final" name="r.dataFinal" />
 					</div>
 					<div class="col-md-4" style="margin-top: 30px;">
 						<c:if test="${not empty errors.from('r.dataFinal')}">
@@ -54,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-		
+
 			<button type="submit" class="btn btn-default">Exportar</button>
 		</form>
 	</div>

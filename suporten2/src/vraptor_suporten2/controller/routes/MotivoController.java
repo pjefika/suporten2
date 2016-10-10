@@ -30,6 +30,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 	}
 
 	@Override
+	@Admin
 	public void create() {
 		result.include("macroMotivoList", macroDao.listar());
 

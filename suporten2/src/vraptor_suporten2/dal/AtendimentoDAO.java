@@ -33,7 +33,7 @@ public class AtendimentoDAO extends AbstractDAO{
 	public List<Atendimento> listar(Relatorio r){
 
 		try {
-			Query query = this.entityManager.createQuery("FROM Atendimento s WHERE s.dataRegistro BETWEEN :param1 AND :param2");
+			Query query = this.entityManager.createQuery("FROM Atendimento s WHERE s.dataRegistro BETWEEN :param1 AND :param2 ORDER BY s.dataRegistro DESC");
 			query.setParameter("param1", r.getDataInicio());
 			query.setParameter("param2", r.getDataFinal());
 			return query.getResultList();
@@ -47,7 +47,7 @@ public class AtendimentoDAO extends AbstractDAO{
 	public List<Atendimento> listarPorTerminalComLimite(Atendimento at, int limite){
 
 		try {
-			Query query = this.entityManager.createQuery("FROM Atendimento s WHERE s.terminal =:param1 ORDER BY s.dataRegistro ASC");
+			Query query = this.entityManager.createQuery("FROM Atendimento s WHERE s.terminal =:param1 ORDER BY s.dataRegistro DESC");
 			query.setParameter("param1", at.getTerminal());
 			return query.setMaxResults(limite).getResultList();
 		} catch (Exception e) {

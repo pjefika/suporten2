@@ -7,7 +7,7 @@
 	<h2>Atendimento</h2>
 </div>
 <div class="row">
-	<div class="col-xs-8">
+	<div class="col-xs-7">
 		<form action="${linkTo[AtendimentoController].add}" method="post">
 			
 			<div class="form-group">
@@ -140,7 +140,7 @@
 			<button type="submit" class="btn btn-default">Registrar</button>
 		</form>
 	</div>
-	<div class="col-xs-4">
+	<div class="col-xs-5">
 		<div class="panel panel-default infos hide">
 			<div class="panel-heading">Últimos 5 materiais abertos pelo Operador</div>
 			<div class="panel-body" id="materiais">
@@ -151,14 +151,25 @@
 		<div class="panel panel-default infos hide">
 			<div class="panel-heading">Últimos 5 comandos executados pelo Operador</div>
 			<div class="panel-body" id="comandos">
-			
+				
 			</div>
 		</div>
 		
 		<div class="panel panel-default infos hide">
 			<div class="panel-heading">Atendimentos realizados para mesmo Terminal/Id Fibra/ Instância</div>
-			<div class="panel-body" id="atendimentos">
-			
+			<div class="panel-body">
+				<table class='table table-condensed table-striped'>
+					<thead>
+						<tr>
+							<th>Operador</th>
+							<th>Suporte</th>
+							<th>Solução</th>
+							<th>Data</th>
+						</tr>
+					</thead>
+					<tbody id="atendimentos">
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -297,11 +308,10 @@
 					for(i=0; i < atends.list.length; i++){
 						var ledata = new Date(atends.list[i].dataRegistro);
 						var data = ledata.getDate()+"/"+ledata.getMonth()+"/"+ledata.getFullYear()+" "+ledata.getHours()+":"+ledata.getMinutes();
-						ats += "Operador: "+ atends.list[i].loginOperador+
-								"<br> Suporte: " + atends.list[i].loginRegistro + 
-								"<br> Solução: " + atends.list[i].solucao.nome +
-								"<br> Observação: "+ atends.list[i].observacao +
-								"<br> Data: "+ data + "<hr>";
+						ats += "<tr><td>"+ atends.list[i].loginOperador+
+								"</td><td>" + atends.list[i].loginRegistro + 
+								"</td><td>" + atends.list[i].solucao.nome +
+								"</td><td>"+ data + "</td></tr>";
 					}
 					$("#atendimentos").html(ats);
 				}

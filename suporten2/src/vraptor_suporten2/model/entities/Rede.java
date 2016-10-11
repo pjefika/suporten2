@@ -1,6 +1,7 @@
 package vraptor_suporten2.model.entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SUPORTEN2_REDE")
-public class Rede implements EntityCrudInterface{
+public class Rede implements EntityCrudInterface, Comparable<Rede>{
 	
 	@Id
 	@GeneratedValue
@@ -73,10 +74,12 @@ public class Rede implements EntityCrudInterface{
 		List<MacroMotivo> lista = new ArrayList<MacroMotivo>();
 				
 		for (MacroMotivo macro : this.macroMotivos) {
-			if(macro.getAtivo()){
+			if(macro.getAtivo() && !lista.contains(macro)){
 				lista.add(macro);
 			}
 		}
+		
+		Collections.sort(lista);
 		
 		return lista;
 	}
@@ -84,4 +87,10 @@ public class Rede implements EntityCrudInterface{
 	public void setMacroMotivos(List<MacroMotivo> macroMotivos) {
 		this.macroMotivos = macroMotivos;
 	}
+
+	@Override
+	public int compareTo(Rede o) {
+		return this.getNome().compareToIgnoreCase(o.getNome());
+	}
+
 }

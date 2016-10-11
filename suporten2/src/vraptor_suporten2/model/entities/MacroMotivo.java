@@ -1,6 +1,7 @@
 package vraptor_suporten2.model.entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SuporteN2_MacroMotivo")
-public class MacroMotivo implements EntityCrudInterface{
+public class MacroMotivo implements EntityCrudInterface, Comparable<MacroMotivo>{
 	
 	@Id
 	@GeneratedValue
@@ -79,21 +80,32 @@ public class MacroMotivo implements EntityCrudInterface{
 		return motivos;
 	}
 	
+	/**
+	 * Retorna Lista de Motivos Ativos
+	 * @return
+	 */
 	public List<Motivo> getMotivosAtivos() {
 		
 		List<Motivo> lista = new ArrayList<Motivo>();
 				
 		for (Motivo motivo : this.motivos) {
-			if(motivo.getAtivo()){
+			if(motivo.getAtivo() && !lista.contains(motivo)){
 				lista.add(motivo);
 			}
 		}
+		
+		Collections.sort(lista);
 		
 		return lista;
 	}
 	
 	public void setMotivos(List<Motivo> motivos) {
 		this.motivos = motivos;
+	}
+	
+	@Override
+	public int compareTo(MacroMotivo o) {
+		return this.getNome().compareToIgnoreCase(o.getNome());
 	}
 
 }

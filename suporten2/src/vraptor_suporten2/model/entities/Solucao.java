@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SuporteN2_Solucao")
-public class Solucao implements EntityCrudInterface{
+public class Solucao implements EntityCrudInterface, Comparable<Solucao>{
 	
 	@Id
 	@GeneratedValue
@@ -61,6 +61,11 @@ public class Solucao implements EntityCrudInterface{
 
 	public void setMotivo(Motivo motivo) {
 		this.motivo = motivo;
+	}
+
+	@Override
+	public int compareTo(Solucao o) {
+		return this.getNome().compareToIgnoreCase(o.getNome());
 	}
 	
 }

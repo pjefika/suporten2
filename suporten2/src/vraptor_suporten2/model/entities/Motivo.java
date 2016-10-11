@@ -1,6 +1,7 @@
 package vraptor_suporten2.model.entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="SuporteN2_Motivo")
-public class Motivo implements EntityCrudInterface{
+public class Motivo implements EntityCrudInterface, Comparable<Motivo>{
 	
 	@Id
 	@GeneratedValue
@@ -76,10 +77,12 @@ public class Motivo implements EntityCrudInterface{
 		List<Solucao> lista = new ArrayList<Solucao>();
 				
 		for (Solucao solucao : this.solucaos) {
-			if(solucao.getAtivo()){
+			if(solucao.getAtivo() && !lista.contains(solucao)){
 				lista.add(solucao);
 			}
 		}
+		
+		Collections.sort(lista);
 		
 		return lista;
 	}
@@ -94,6 +97,11 @@ public class Motivo implements EntityCrudInterface{
 
 	public void setSolucaos(List<Solucao> solucaos) {
 		this.solucaos = solucaos;
+	}
+
+	@Override
+	public int compareTo(Motivo o) {
+		return this.getNome().compareToIgnoreCase(o.getNome());
 	}
 	
 }

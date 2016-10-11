@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.MotivoDAO;
+import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.annotation.Admin;
 import vraptor_suporten2.model.entities.Motivo;
 
@@ -24,6 +25,9 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 
 	@Inject
 	private MacroMotivoDAO macroDao;
+	
+	@Inject
+	private RedeDAO redeDao;
 
 	public MotivoController() {
 
@@ -32,8 +36,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 	@Override
 	@Admin
 	public void create() {
-		result.include("macroMotivoList", macroDao.listar());
-
+		result.include("redeList", redeDao.listar());
 	}
 
 	@Admin

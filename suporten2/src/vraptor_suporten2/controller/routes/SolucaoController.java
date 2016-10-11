@@ -11,6 +11,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.view.Results;
 import vraptor_suporten2.dal.MotivoDAO;
+import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.dal.SolucaoDAO;
 import vraptor_suporten2.model.annotation.Admin;
 import vraptor_suporten2.model.entities.Solucao;
@@ -24,6 +25,8 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 	
 	@Inject
 	private MotivoDAO motivoDao;
+	
+	@Inject RedeDAO redeDao;
 
 	public SolucaoController() {
 
@@ -31,7 +34,7 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 
 	@Admin
 	public void create() {
-		result.include("motivoList", motivoDao.listar());
+		result.include("redeList", redeDao.listar());
 	}
 
 	@Admin

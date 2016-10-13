@@ -100,6 +100,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 		return dao.listar();
 	}
 
+	@SuppressWarnings("unused")
 	@Admin
 	@Path("/motivo/edit/{id}")
 	public Motivo edit(Integer id) {		

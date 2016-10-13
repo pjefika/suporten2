@@ -258,11 +258,12 @@
 	             	var comandos = [];
 	             	
 	             	$(xml).find('comando').each(function(){ 
-	                     	
+	                    	
 	             		var nome = $(this).attr('nome');
 	             		var data = $(this).attr('data');
-	
-							comandos.push(nome + ' - ' + data + '<br/>');
+						var instancia = $(this).attr('instancia');
+						
+							comandos.push(instancia + ' - ' + nome + ' - ' + data + '<br/>');
 	             	});
 	 
 			           $("#comandos").html(comandos);

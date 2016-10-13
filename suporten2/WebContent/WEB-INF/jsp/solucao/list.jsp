@@ -13,7 +13,7 @@
 	<thead>
 		<tr>
 			<th>Nome</th>
-			<th>Motivo</th>
+			<th>Defeito Encontrado</th>
 			<th>Ativo</th>
 			<th>Ações</th>
 		</tr>

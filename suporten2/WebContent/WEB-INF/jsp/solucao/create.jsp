@@ -41,7 +41,7 @@
 
 	<div class="form-group">
 		<div class="form-inline">
-			<label for="macro">Macro Motivo:</label> 
+			<label for="macro">Motivo de Suporte:</label> 
 			<select class="form-control" name="" id="macro">
 				<option selected="selected" disabled="disabled">Selecione</option>
 			</select>
@@ -56,7 +56,7 @@
 
 	<div class="form-group">
 		<div class="form-inline">
-			<label for="macro">Motivo:</label> 
+			<label for="macro">Defeito Encontrado:</label> 
 			<select class="form-control" name="s.motivo.id" id="motivo">
 				<option selected="selected" disabled="disabled">Selecione</option>
 			</select>

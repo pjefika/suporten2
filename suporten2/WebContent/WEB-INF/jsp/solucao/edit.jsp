@@ -32,7 +32,7 @@
 
 	<div class="form-group">
 		<div class="form-inline">
-			<label for="macro">Motivo:</label> 
+			<label for="macro">Defeito Encontrado:</label> 
 			<select class="form-control" name="s.motivo.id">
 				<option selected="selected" disabled="disabled">Selecione</option>
 				<c:forEach items="${motivoList}" var="motivo">

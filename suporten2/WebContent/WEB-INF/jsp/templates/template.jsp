@@ -56,8 +56,8 @@
 										<li role="separator" class="divider"></li>
 										<li class="dropdown-header">Cadastros</li>
 										<li><a href="${linkTo[RedeController].list}">Rede</a></li>
-										<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
-										<li><a href="${linkTo[MotivoController].list}">Motivo</a></li>
+										<li><a href="${linkTo[MacroMotivoController].list}">Motivo de Suporte</a></li>
+										<li><a href="${linkTo[MotivoController].list}">Defeito Encontrado</a></li>
 										<li><a href="${linkTo[SolucaoController].list}">Solução</a></li>
 									</ul>
 								</li>

@@ -105,11 +105,14 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 	public Motivo edit(Integer id) {		
 
 		Motivo m = new Motivo();
+		
 		m.setId(id);
-
+		
+		result.include("redeList", redeDao.listar());
+		
+		
 		Motivo macro = (Motivo) dao.buscarPorId(m);
-
-		result.include("macroMotivoList", macroDao.listar());
+		result.include("macroMotivoList", macroDao.listarPorRede(macro.getMacroMotivo().getRede().getId()));
 
 		if(macro == null){
 			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");

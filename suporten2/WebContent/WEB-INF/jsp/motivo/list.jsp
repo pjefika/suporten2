@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/jquery.dataTables.min.css">
 <div class="page-header">
-	<h2>Listar Motivos</h2>
+	<h2>Listar Defeito Encontrado</h2>
 </div>
 
 <a class="row" href="${linkTo[MotivoController].create}">Adicionar</a>
@@ -13,7 +13,7 @@
 	<thead>
 		<tr>
 			<th>Nome</th>
-			<th>Macro Motivo</th>
+			<th>Motivo de Suporte</th>
 			<th>Ativo</th>
 			<th>Ações</th>
 		</tr>
@@ -90,7 +90,7 @@
 				
 				<input type="hidden" name="id" id="idRef" />
 				<div class="modal-body">
-					Remover Motivo <b id="nomeRef"></b>?
+					Remover Defeito Encontrado <b id="nomeRef"></b>?
 				</div>
 
 				<div class="modal-footer">

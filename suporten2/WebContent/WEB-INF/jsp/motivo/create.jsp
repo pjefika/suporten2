@@ -4,7 +4,7 @@
 	prefix="decorator"%>
 
 <div class="page-header">
-	<h2>Cadastro de Motivo</h2>
+	<h2>Cadastro de Defeito Encontrado</h2>
 </div>
 <form action="${linkTo[MotivoController].add}" method="post" style="width: 75%;">
 
@@ -41,7 +41,7 @@
 	
 	<div class="form-group">
 		<div class="form-inline">
-			<label for="macro">Macro Motivo:</label> 
+			<label for="macro">Motivo de Suporte:</label> 
 			<select class="form-control" name="m.macroMotivo.id" id="macro">
 				<option selected="selected" disabled="disabled">Selecione</option>
 			</select>
@@ -91,8 +91,5 @@ $("#rede").change(function(){
 	});
 	
 });
-
-
-
 
 </script>

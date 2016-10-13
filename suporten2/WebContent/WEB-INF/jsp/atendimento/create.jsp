@@ -77,7 +77,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="macro">Macro Motivo:</label>
+						<label for="macro">Motivo de Suporte:</label>
 						 <select class="form-control"
 							name="" id="macro">
 							<option value="" selected="selected" disabled="disabled">Selecione</option>
@@ -92,7 +92,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-8">
-						<label for="motivo">Motivo:</label> 
+						<label for="motivo">Defeito Encontrado:</label> 
 						<select class="form-control"
 							name="" id="motivo">
 							<option value="" selected="selected" disabled="disabled">Selecione</option>

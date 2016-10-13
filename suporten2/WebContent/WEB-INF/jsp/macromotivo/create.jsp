@@ -4,7 +4,7 @@
 	prefix="decorator"%>
 
 <div class="page-header">
-	<h2>Cadastro de Macro Motivo</h2>
+	<h2>Cadastro de Motivo de Suporte</h2>
 </div>
 <form action="${linkTo[MacroMotivoController].add}" method="post" style="width: 75%;">
 

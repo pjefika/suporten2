@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/dataTable/css/jquery.dataTables.min.css">
 <div class="page-header">
-	<h2>Listar Macro Motivos</h2>
+	<h2>Listar Motivo de Suporte</h2>
 </div>
 
 <a class="row" href="${linkTo[MacroMotivoController].create}">Adicionar</a>
@@ -90,7 +90,7 @@
 				
 				<input type="hidden" name="id" id="idRef" />
 				<div class="modal-body">
-					Remover Macro Motivo <b id="nomeRef"></b>?
+					Remover Motivo de Suporte <b id="nomeRef"></b>?
 				</div>
 
 				<div class="modal-footer">

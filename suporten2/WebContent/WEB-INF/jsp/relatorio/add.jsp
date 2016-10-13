@@ -10,8 +10,8 @@
 	<thead>
 		<tr>
 			<th>Rede</th>
-			<th>Macro Motivo</th>
-			<th>Motivo</th>
+			<th>Motivo de Suporte</th>
+			<th>Defeito Encontrado</th>
 			<th>Solução</th>
 			<th>Login Operador</th>
 			<th>Login Registro</th>

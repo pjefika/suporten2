@@ -1,6 +1,7 @@
 package vraptor_suporten2.dal;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -34,8 +35,16 @@ public class AtendimentoDAO extends AbstractDAO{
 
 		try {
 			Query query = this.entityManager.createQuery("FROM Atendimento s WHERE s.dataRegistro BETWEEN :param1 AND :param2 ORDER BY s.dataRegistro DESC");
+			
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(r.getDataFinal());
+			cal.add(Calendar.HOUR, 23);
+			cal.add(Calendar.MINUTE, 59);
+			cal.add(Calendar.SECOND, 59);
+
 			query.setParameter("param1", r.getDataInicio());
-			query.setParameter("param2", r.getDataFinal());
+			query.setParameter("param2", cal.getTime());
+
 			return query.getResultList();
 		} catch (Exception e) {
 			return new ArrayList<Atendimento>();

@@ -26,20 +26,6 @@ public class MacroMotivoDAO extends AbstractDAO{
 
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<MacroMotivo> listarPorRede(Integer r){
-
-		try {
-			Query query = this.entityManager.createQuery("FROM MacroMotivo m WHERE m.rede =:param1");
-			query.setParameter("param1", r);
-			
-			return query.getResultList();
-			
-		} catch (Exception e) {
-			return new ArrayList<MacroMotivo>();
-		}
-
-	}
 	
 	public void excluir(MacroMotivo m) throws Exception{
 		

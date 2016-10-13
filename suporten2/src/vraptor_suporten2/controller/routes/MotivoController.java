@@ -10,7 +10,6 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.view.Results;
-import vraptor_suporten2.dal.MacroMotivoDAO;
 import vraptor_suporten2.dal.MotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.model.annotation.Admin;
@@ -23,8 +22,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 	@Inject
 	private MotivoDAO dao;
 
-	@Inject
-	private MacroMotivoDAO macroDao;
+
 	
 	@Inject
 	private RedeDAO redeDao;
@@ -113,7 +111,9 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 		
 		
 		Motivo macro = (Motivo) dao.buscarPorId(m);
-		result.include("macroMotivoList", macroDao.listarPorRede(macro.getMacroMotivo().getRede().getId()));
+		
+				
+		result.include("macroMotivoList", macro.getMacroMotivo().getRede().getMacroMotivos());
 
 		if(macro == null){
 			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");

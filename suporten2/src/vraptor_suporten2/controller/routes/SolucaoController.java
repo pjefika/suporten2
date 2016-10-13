@@ -10,7 +10,6 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.view.Results;
-import vraptor_suporten2.dal.MotivoDAO;
 import vraptor_suporten2.dal.RedeDAO;
 import vraptor_suporten2.dal.SolucaoDAO;
 import vraptor_suporten2.model.annotation.Admin;
@@ -22,9 +21,6 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 
 	@Inject
 	private SolucaoDAO dao;
-	
-	@Inject
-	private MotivoDAO motivoDao;
 	
 	@Inject RedeDAO redeDao;
 
@@ -97,6 +93,7 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 	}
 	
 	
+	@SuppressWarnings("unused")
 	@Admin
 	@Path("/solucao/edit/{id}")
 	public Solucao edit(Integer id) {	
@@ -106,7 +103,12 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 		
 		Solucao s = (Solucao) dao.buscarPorId(m);
 		
-		result.include("motivoList", motivoDao.listar());
+				
+		result.include("redeList", redeDao.listar());
+		
+		result.include("motivoList", s.getMotivo().getMacroMotivo().getMotivos());
+		
+		result.include("macroMotivoList", s.getMotivo().getMacroMotivo().getRede().getMacroMotivos());
 		
 		if(s == null){
 			result.include("mensagemFalha", m.getClass().getSimpleName() + " inexistente!");

@@ -59,7 +59,7 @@ public class UsuarioController {
 	}
 	
 	public void logout(){
-		session.setUsuario(null);
+		session.setUsuario(new Usuario());
 		result.forwardTo(UsuarioController.class).create();
 	}
 	

@@ -44,25 +44,25 @@
 				<ul class="nav navbar-nav">
 				
 					<li><a href="${linkTo[HomeController].index}">Home</a></li>
-					<c:if test="${not empty sessionUsuarioEfika.usuario.login}">
-						<c:if test="${sessionUsuarioEfika.admin}">
+						<c:if test="${sessionUsuarioEfika.isLogado()}">
 							<li><a href="${linkTo[AtendimentoController].create}">Atendimento</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Administração <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-header">Relatórios</li>
-									<li><a href="${linkTo[RelatorioController].create}">Base</a></li>
-									<li role="separator" class="divider"></li>
-									<li class="dropdown-header">Cadastros</li>
-									<li><a href="${linkTo[RedeController].list}">Rede</a></li>
-									<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
-									<li><a href="${linkTo[MotivoController].list}">Motivo</a></li>
-									<li><a href="${linkTo[SolucaoController].list}">Solução</a></li>
-								</ul>
-							</li>				
+							<c:if test="${sessionUsuarioEfika.isAdmin()}">
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Administração <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="dropdown-header">Relatórios</li>
+										<li><a href="${linkTo[RelatorioController].create}">Base</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">Cadastros</li>
+										<li><a href="${linkTo[RedeController].list}">Rede</a></li>
+										<li><a href="${linkTo[MacroMotivoController].list}">Macro Motivo</a></li>
+										<li><a href="${linkTo[MotivoController].list}">Motivo</a></li>
+										<li><a href="${linkTo[SolucaoController].list}">Solução</a></li>
+									</ul>
+								</li>
+							</c:if>				
 						</c:if>					
-					</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 				

@@ -158,18 +158,9 @@
 		<div class="panel panel-default infos hide">
 			<div class="panel-heading">Atendimentos realizados para mesmo Terminal/Id Fibra/ Instância</div>
 			<div class="panel-body">
-				<table class='table table-condensed table-striped'>
-					<thead>
-						<tr>
-							<th>Operador</th>
-							<th>Suporte</th>
-							<th>Solução</th>
-							<th>Data</th>
-						</tr>
-					</thead>
-					<tbody id="atendimentos">
-					</tbody>
-				</table>
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  
+				</div>
 			</div>
 		</div>
 	</div>
@@ -309,12 +300,26 @@
 					for(i=0; i < atends.list.length; i++){
 						var ledata = new Date(atends.list[i].dataRegistro);
 						var data = ledata.getDate()+"/"+ledata.getMonth()+"/"+ledata.getFullYear()+" "+ledata.getHours()+":"+ledata.getMinutes();
-						ats += "<tr><td>"+ atends.list[i].loginOperador+
-								"</td><td>" + atends.list[i].loginRegistro + 
-								"</td><td>" + atends.list[i].solucao.nome +
-								"</td><td>"+ data + "</td></tr>";
+						ats+= '<div class="panel panel-default">'+
+						    	'<div class="panel-heading" role="tab" id="heading'+i+'">'+
+					      			'<h4 class="panel-title">'+
+					        			'<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+i+'" aria-expanded="true" aria-controls="collapse'+i+'">'+
+					          				'Operador: '+ atends.list[i].loginOperador + ' Data: ' + data +
+					        			'</a>'+
+					      			'</h4>'+
+					    		'</div>'+
+					    		'<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">'+
+						      		'<div class="panel-body">'+
+						        		'<b>Suporte</b>: '+ atends.list[i].loginRegistro + ' <b>Rede</b>: ' + atends.list[i].solucao.motivo.macroMotivo.rede.nome + '<br>' +
+						        		'<b>Motivo de Suporte</b>: ' + atends.list[i].solucao.motivo.macroMotivo.nome + ' <b>Defeito Encontrado</b>: ' + atends.list[i].solucao.motivo.nome + '<br>' +
+						        		'<b>Solução</b>: ' + atends.list[i].solucao.nome + '<br>' +
+						        		'<b>Observações</b>: ' + atends.list[i].observacao +
+						      		'</div>'+
+						    	'</div>'+
+					  		'</div>';
+	
 					}
-					$("#atendimentos").html(ats);
+					$("#accordion").html(ats);
 				}
 			});
 			

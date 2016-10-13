@@ -75,7 +75,7 @@ public class JsonController extends AbstractCrudController{
 		List<Atendimento> at = atendimentoDao.listarPorTerminalComLimite(atendimento, 5);
 		
 		if(at != null){
-			result.use(Results.json()).from(at).include("solucao").serialize();
+			result.use(Results.json()).from(at).include("solucao").include("solucao.motivo").include("solucao.motivo.macroMotivo").include("solucao.motivo.macroMotivo.rede").serialize();
 		}
     }
 }

@@ -17,6 +17,7 @@
 						<input type="text"
 							class="form-control" id="operadorLogin"
 							placeholder="Matrícula do Operador" name="a.loginOperador" value="${atendimento.loginOperador}"/>
+						<span id="nomeOperador"></span>
 					</div>
 					<div class="col-md-4" style="margin-top: 30px;">
 						<c:if test="${not empty errors.from('a.loginOperador')}">
@@ -238,6 +239,40 @@
 
 		$("#operadorLogin").change(function(){
 			var login = $(this).val();
+
+            $.ajax({ 
+                type: 'GET',
+                data: 
+                'login=' +  login,
+                url:  'http://efika/web/services/colaborador/',
+                dataType: 'xml',
+                success: function(xml){
+
+                	$(xml).find('colaborador').each(function(){ 
+
+                 		var nome = $(this).find('nome').text();
+                 		var cargo = $(this).find('cargo').text();
+                 		var supervisor = $(this).find('supervisor').text();
+                 		var area = $(this).find('area').text();
+                 		var pabx = $(this).find('pabx').text();
+
+
+	                	if(nome == 'Colaborador não encontrado!' || nome == ''){
+	        				$("#nomeOperador").hide();
+			            }else{
+				            
+			            	$("#nomeOperador").text(nome + ' - Gestor: ' + supervisor);
+
+							$("#nomeOperador").show();
+							
+			          	}
+
+						
+
+                	});
+                }
+            });
+			
 			 $.ajax({ 
 	             type: 'GET',
 	             data: 

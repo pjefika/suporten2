@@ -49,5 +49,17 @@ public class SolucaoDAO extends AbstractDAO{
 			throw new Exception("Falha ao excluir " + s.getClass().getSimpleName() + ", existem Soluções associadas.");
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Solucao> buscarListaPorNome(Solucao s){
+		
+		try {
+			Query query = this.entityManager.createQuery("FROM Solucao s WHERE s.nome =:param1");
+			query.setParameter("param1", s.getNome());
+			return (List<Solucao>) query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 }

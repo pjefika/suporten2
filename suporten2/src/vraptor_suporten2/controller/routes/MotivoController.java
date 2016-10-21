@@ -39,7 +39,11 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 
 	@Admin
 	public void add(@Valid Motivo m) {
-
+		
+		System.out.println(m);
+		
+		
+		
 		if(m.getMacroMotivo().getId() == null){
 			validation.add(new SimpleMessage("m.macroMotivo.id", "Campo requerido!"));
 		}
@@ -47,21 +51,27 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 		validation.onErrorForwardTo(this).create();
 
 		try {
-
-			if((Motivo) dao.buscarPorNome(m) == null){
-
-				if(m.getAtivo() == null){
-					m.setAtivo(false);
+			
+			List<Motivo> lelist = dao.buscarListaPorNome(m);
+			
+			for (Motivo motivo : lelist) {
+				
+				if(motivo.getMacroMotivo().getId() == m.getMacroMotivo().getId()){
+					result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
+					result.forwardTo(this).create();
+					return;
 				}
-
-				dao.cadastrar(m);
-				result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
-				result.use(Results.logic()).redirectTo(this.getClass()).list();
-
-			}else{
-				result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
-				result.forwardTo(this).create();
 			}
+
+			if(m.getAtivo() == null){
+				m.setAtivo(false);
+			}
+
+			dao.cadastrar(m);
+			result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
+			result.use(Results.logic()).redirectTo(this.getClass()).list();
+
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

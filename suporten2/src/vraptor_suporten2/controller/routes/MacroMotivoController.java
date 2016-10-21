@@ -92,20 +92,24 @@ public class MacroMotivoController extends AbstractCrudController implements Ent
 
 		try {
 			
-			if((MacroMotivo) dao.buscarPorNome(m) == null){
+			List<MacroMotivo> lelist = dao.buscarListaPorNome(m);
 				
-				if(m.getAtivo() == null){
-					m.setAtivo(false);
+			for (MacroMotivo macroMotivo : lelist) {
+				if(macroMotivo.getRede().getId() == m.getRede().getId()){
+					result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
+					result.forwardTo(this).create();
+					return;
 				}
-				
-				dao.cadastrar(m);
-				result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
-				result.use(Results.logic()).redirectTo(this.getClass()).list();
-				
-			}else{
-				result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
-				result.forwardTo(this).create();
 			}
+			
+			if(m.getAtivo() == null){
+				m.setAtivo(false);
+			}
+			
+			dao.cadastrar(m);
+			result.include("mensagem", m.getClass().getSimpleName() + " adicionado com sucesso!");
+			result.use(Results.logic()).redirectTo(this.getClass()).list();
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

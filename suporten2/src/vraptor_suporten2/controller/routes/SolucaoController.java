@@ -49,20 +49,24 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 
 		try {
 			
-			if((Solucao) dao.buscarPorNome(s) == null){
+			List<Solucao> lelist = dao.buscarListaPorNome(s);
 				
-				if(s.getAtivo() == null){
-					s.setAtivo(false);
+			for (Solucao solucao : lelist) {
+				if(solucao.getMotivo().getId() == s.getMotivo().getId()){
+					result.include("mensagemFalha", s.getClass().getSimpleName() + ": " + s.getNome() + " já existente!");
+					result.forwardTo(this).create();
+					return;
 				}
-				
-				dao.cadastrar(s);
-				result.include("mensagem", s.getClass().getSimpleName() + " adicionada com sucesso!");
-				result.use(Results.logic()).redirectTo(this.getClass()).list();
-				
-			}else{
-				result.include("mensagemFalha", s.getClass().getSimpleName() + ": " + s.getNome() + " já existente!");
-				result.forwardTo(this).create();
 			}
+		
+			if(s.getAtivo() == null){
+				s.setAtivo(false);
+			}
+			
+			dao.cadastrar(s);
+			result.include("mensagem", s.getClass().getSimpleName() + " adicionada com sucesso!");
+			result.use(Results.logic()).redirectTo(this.getClass()).list();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

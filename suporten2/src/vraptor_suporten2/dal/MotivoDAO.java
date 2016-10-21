@@ -40,5 +40,17 @@ public class MotivoDAO extends AbstractDAO{
 			throw new Exception("Falha ao excluir " + m.getClass().getSimpleName() + ", existem Soluções associadas.");
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Motivo> buscarListaPorNome(Motivo m){
+		
+		try {
+			Query query = this.entityManager.createQuery("FROM Motivo m WHERE m.nome =:param1");
+			query.setParameter("param1", m.getNome());
+			return (List<Motivo>) query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 }

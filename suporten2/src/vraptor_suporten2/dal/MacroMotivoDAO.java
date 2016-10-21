@@ -40,4 +40,16 @@ public class MacroMotivoDAO extends AbstractDAO{
 			throw new Exception("Falha ao excluir Macro Motivo, existem Motivos associados.");
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<MacroMotivo> buscarListaPorNome(MacroMotivo m){
+		
+		try {
+			Query query = this.entityManager.createQuery("FROM MacroMotivo m WHERE m.nome =:param1");
+			query.setParameter("param1", m.getNome());
+			return (List<MacroMotivo>) query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

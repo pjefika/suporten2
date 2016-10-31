@@ -68,15 +68,15 @@ public class AtendimentoController  extends AbstractCrudController{
 			validation.add(new SimpleMessage("a.loginOperador", "Campo requerido!"));
 		}else{
 
-			Pattern pattern;
-			Matcher matcher;
-
-			pattern = Pattern.compile("(\\w{1})\\d{7}");
-			matcher = pattern.matcher(a.getLoginOperador());
-
-			if(!matcher.matches()){
-				validation.add(new SimpleMessage("a.loginOperador", "Utilize o formato: G0042204/A0042204!"));
-			}
+//			Pattern pattern;
+//			Matcher matcher;
+//
+//			pattern = Pattern.compile("(\\w{1})\\d{7}");
+//			matcher = pattern.matcher(a.getLoginOperador());
+//
+//			if(!matcher.matches()){
+//				validation.add(new SimpleMessage("a.loginOperador", "Utilize o formato: G0042204/A0042204!"));
+//			}
 			
 		}
 

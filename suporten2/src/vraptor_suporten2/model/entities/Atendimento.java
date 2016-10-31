@@ -10,7 +10,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -26,7 +25,7 @@ public class Atendimento {
 	@NotNull(message="Campo obrigatório")
 	private Solucao solucao;
 	
-	@Pattern(regexp = "(\\w{1})\\d{7}", message = "Utilize o formato: G0042204/A0042204")
+//	@Pattern(regexp = "(\\w{1})\\d{7}", message = "Utilize o formato: G0042204/A0042204")
 	@NotEmpty(message="Campo obrigatório")
 	private String loginOperador;
 	

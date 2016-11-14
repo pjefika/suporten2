@@ -4,8 +4,11 @@
   - Henrique Antonio Merlin Junior;
   - Matheus Henrique Agibert;
   
-### Framework:
+### Framework Server-Side:
 - Vraptor 4;
+
+### Framework Client-Side:
+- JQuery
 
 ### Templates:
 - Sitemesh;

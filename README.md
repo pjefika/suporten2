@@ -1,20 +1,20 @@
-# SuporteN2 
+SuporteN2
+===================
+### Desenvolvedores
+\#| Nome
+-------- | ---
+1| Henrique Antonio Merlin Junior
+2| Matheus Henrique Agibert
 
-## Desenvolvedores:
-  - Henrique Antonio Merlin Junior;
-  - Matheus Henrique Agibert;
-  
-### Framework Server-Side:
-- Vraptor 4;
 
-### Framework Client-Side:
-- JQuery
+---------
 
-### Templates:
-- Sitemesh;
+### Implementação
 
-### ORM:
-- JPA;
-
-### WS:
-- SOAP;
+Item     | Ferramenta
+-------- | ---
+Framework Server-Side| Vraptor 4
+Framework Client-Side| JQuery
+Templates| Sitemesh
+ORM| JPA (Hibernate)
+WebServices| SOAP

@@ -11,6 +11,7 @@
     <thead>
         <tr>
             <th>Rede</th>
+            <th>Tipo Atividade</th>
             <th>Motivo de Suporte</th>
             <th>Defeito Encontrado</th>
             <th>Solução</th>
@@ -29,6 +30,7 @@
         <c:forEach items="${atendimentos}" var="at">
             <tr class="leline">
                 <td>${at.solucao.motivo.macroMotivo.rede.nome}</td>
+                <td>${at.tipoAtividade}</td>
                 <td>${at.solucao.motivo.macroMotivo.nome}</td>
                 <td>${at.solucao.motivo.nome}</td>
                 <td>${at.solucao.nome}</td>

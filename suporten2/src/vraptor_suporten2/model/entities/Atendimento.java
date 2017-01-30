@@ -31,6 +31,9 @@ public class Atendimento {
 
     private String loginGuru;
 
+    @NotNull(message = "Campo obrigatório")
+    private String tipoAtividade;
+
     @NotEmpty(message = "Campo obrigatório")
     private String loginRegistro;
 
@@ -111,4 +114,11 @@ public class Atendimento {
         this.loginGuru = loginGuru;
     }
 
+    public String getTipoAtividade() {
+        return tipoAtividade;
+    }
+
+    public void setTipoAtividade(String tipoAtividade) {
+        this.tipoAtividade = tipoAtividade;
+    }
 }

@@ -64,11 +64,22 @@
                 </div>	
             </div>
 
-
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-8">
+                        <label for="tAtividade">Tipo Atividade: </label> 
+                        <select class="form-control" name="a.tipoAtividade" id="tAtividade">
+                            <option value="" selected="selected" disabled="disabled">Selecione</option>
+                            <option value="BD/TT">BD/TT</option>
+                            <option value="Alta/BA">Alta/BA</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group">
-
-
                 <div class="row">
                     <div class="col-md-8">
                         <label for="rede">Rede:</label> 
@@ -83,7 +94,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div>            
 
             <div class="form-group">
                 <div class="row">

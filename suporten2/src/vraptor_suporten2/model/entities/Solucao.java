@@ -11,61 +11,71 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="SuporteN2_Solucao")
-public class Solucao implements EntityCrudInterface, Comparable<Solucao>{
-	
-	@Id
-	@GeneratedValue
-	private Integer id; 
-	
-	@NotEmpty(message="Campo requerido!")
-	private String nome;
-	
-	private Boolean ativo;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@NotNull(message="Não pode ser nulo.")
-	private Motivo motivo;
-	
-	public Solucao() {
-		motivo = new Motivo();
-	}
+@Table(name = "SuporteN2_Solucao")
+public class Solucao implements EntityCrudInterface, Comparable<Solucao> {
 
-	public Integer getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @NotEmpty(message = "Campo requerido!")
+    private String nome;
 
-	public String getNome() {
-		return nome;
-	}
+    private Boolean ativo;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    private Boolean indevido = false;
 
-	public Boolean getAtivo() {
-		return ativo;
-	}
+    @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull(message = "Não pode ser nulo.")
+    private Motivo motivo;
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
+    public Solucao() {
+        motivo = new Motivo();
+    }
 
-	public Motivo getMotivo() {
-		return motivo;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setMotivo(Motivo motivo) {
-		this.motivo = motivo;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Override
-	public int compareTo(Solucao o) {
-		return this.getNome().compareToIgnoreCase(o.getNome());
-	}
-	
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public Motivo getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(Motivo motivo) {
+        this.motivo = motivo;
+    }
+
+    public Boolean getIndevido() {
+        return indevido;
+    }
+
+    public void setIndevido(Boolean indevido) {
+        this.indevido = indevido;
+    }
+
+    @Override
+    public int compareTo(Solucao o) {
+        return this.getNome().compareToIgnoreCase(o.getNome());
+    }
+
 }

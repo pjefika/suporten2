@@ -255,24 +255,22 @@
                 url: 'http://efika/web/services/colaborador/',
                 dataType: 'xml',
                 success: function (xml) {
-
                     $(xml).find('colaborador').each(function () {
-
                         var nome = $(this).find('nome').text();
                         var cargo = $(this).find('cargo').text();
                         var supervisor = $(this).find('supervisor').text();
                         var area = $(this).find('area').text();
                         var pabx = $(this).find('pabx').text();
 
-
-                        if (nome == 'Colaborador não encontrado!' || nome == '') {
-                            $("#nomeOperadorGuru").hide();
+                        if (nome === 'Colaborador não encontrado!') {
+                            //$("#nomeOperadorGuru").hide();
+                            $("#nomeOperadorGuru").text("Login não encontrado.");
                         } else {
-
                             $("#nomeOperadorGuru").text(nome + ' - Gestor: ' + supervisor);
-
                             $("#nomeOperadorGuru").show();
-
+                        }
+                        if (login === '') {
+                            $("#nomeOperadorGuru").hide();
                         }
                     });
                 }
@@ -288,78 +286,74 @@
                 url: 'http://efika/web/services/colaborador/',
                 dataType: 'xml',
                 success: function (xml) {
-
                     $(xml).find('colaborador').each(function () {
-
                         var nome = $(this).find('nome').text();
                         var cargo = $(this).find('cargo').text();
                         var supervisor = $(this).find('supervisor').text();
                         var area = $(this).find('area').text();
                         var pabx = $(this).find('pabx').text();
-
-
-                        if (nome == 'Colaborador não encontrado!' || nome == '') {
-                            $("#nomeOperador").hide();
+                        if (nome === 'Colaborador não encontrado!' || nome === '') {
+                            //$("#nomeOperador").hide();
+                            $("#nomeOperador").text("Login não encontrado.");
                         } else {
-
                             $("#nomeOperador").text(nome + ' - Gestor: ' + supervisor);
-
                             $("#nomeOperador").show();
-
                         }
                     });
                 }
             });
 
+            if (login !== '') {
 
+                $.ajax({
+                    type: 'GET',
+                    data: 'login=' + login,
+                    url: 'http://efika/web/services/comandos/?max=5',
+                    dataType: 'xml',
+                    success: function (xml) {
 
-            $.ajax({
-                type: 'GET',
-                data: 'login=' + login,
-                url: 'http://efika/web/services/comandos/?max=5',
-                dataType: 'xml',
-                success: function (xml) {
+                        var comandos = [];
 
-                    var comandos = [];
+                        $(xml).find('comando').each(function () {
 
-                    $(xml).find('comando').each(function () {
+                            var nome = $(this).attr('nome');
+                            var data = $(this).attr('data');
+                            var instancia = $(this).attr('instancia');
 
-                        var nome = $(this).attr('nome');
-                        var data = $(this).attr('data');
-                        var instancia = $(this).attr('instancia');
+                            comandos.push(instancia + ' - ' + nome + ' - ' + data + '<br/>');
+                        });
 
-                        comandos.push(instancia + ' - ' + nome + ' - ' + data + '<br/>');
-                    });
+                        $("#comandos").html(comandos);
 
-                    $("#comandos").html(comandos);
+                    }
+                });
 
-                }
-            });
+                $.ajax({
+                    type: 'GET',
+                    data: "login=" + login,
+                    url: 'http://efika/web/services/materiais/?max=5',
+                    dataType: 'xml',
+                    success: function (xml) {
 
-            $.ajax({
-                type: 'GET',
-                data: "login=" + login,
-                url: 'http://efika/web/services/materiais/?max=5',
-                dataType: 'xml',
-                success: function (xml) {
+                        var materiais = [];
 
-                    var materiais = [];
+                        $(xml).find('material').each(function () {
 
-                    $(xml).find('material').each(function () {
+                            var titulo = $(this).attr('titulo');
+                            var data = $(this).attr('data');
 
-                        var titulo = $(this).attr('titulo');
-                        var data = $(this).attr('data');
+                            materiais.push(titulo + ' - ' + data + '<br/>');
+                        });
 
-                        materiais.push(titulo + ' - ' + data + '<br/>');
-                    });
+                        $("#materiais").html(materiais);
 
-                    $("#materiais").html(materiais);
-
-                }
-            });
-
-            $(".infos").removeClass("hide");
-
+                    }
+                });
+                $(".infos").removeClass("hide");
+            } else {
+                $(".infos").addClass("hide");
+                $("#nomeOperador").hide();
+            }
         });
 
         $("#terminal").change(function () {

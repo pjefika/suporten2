@@ -14,90 +14,101 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="SuporteN2_Atendimento")
+@Table(name = "SuporteN2_Atendimento")
 public class Atendimento {
 
-	@Id
-	@GeneratedValue
-	private Integer id; 
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@NotNull(message="Campo obrigatório")
-	private Solucao solucao;
-	
-//	@Pattern(regexp = "(\\w{1})\\d{7}", message = "Utilize o formato: G0042204/A0042204")
-	@NotEmpty(message="Campo obrigatório")
-	private String loginOperador;
-	
-	@NotEmpty(message="Campo obrigatório")
-	private String loginRegistro;
-	
-	@NotEmpty(message="Campo obrigatório")
-	private String terminal;	
-	
-	@Lob
-	private String observacao;
-	
-	@NotNull
-	private Date dataRegistro;
-	
-	public Atendimento() {
-		solucao = new Solucao();
-	}
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-	public Integer getId() {
-		return id;
-	}
+    @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull(message = "Campo obrigatório")
+    private Solucao solucao;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    //@Pattern(regexp = "(\\w{1})\\d{7}", message = "Utilize o formato: G0042204/A0042204")
+    @NotEmpty(message = "Campo obrigatório")
+    private String loginOperador;
 
-	public Solucao getSolucao() {
-		return solucao;
-	}
+    private String loginGuru;
 
-	public void setSolucao(Solucao solucao) {
-		this.solucao = solucao;
-	}
+    @NotEmpty(message = "Campo obrigatório")
+    private String loginRegistro;
 
-	public String getLoginOperador() {
-		return loginOperador;
-	}
+    @NotEmpty(message = "Campo obrigatório")
+    private String terminal;
 
-	public void setLoginOperador(String loginOperador) {
-		this.loginOperador = loginOperador;
-	}
+    @Lob
+    private String observacao;
 
-	public String getLoginRegistro() {
-		return loginRegistro;
-	}
+    @NotNull
+    private Date dataRegistro;
 
-	public void setLoginRegistro(String loginRegistro) {
-		this.loginRegistro = loginRegistro;
-	}
+    public Atendimento() {
+        solucao = new Solucao();
+    }
 
-	public String getTerminal() {
-		return terminal;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setTerminal(String terminal) {
-		this.terminal = terminal;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getObservacao() {
-		return observacao;
-	}
+    public Solucao getSolucao() {
+        return solucao;
+    }
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
+    public void setSolucao(Solucao solucao) {
+        this.solucao = solucao;
+    }
 
-	public Date getDataRegistro() {
-		return dataRegistro;
-	}
+    public String getLoginOperador() {
+        return loginOperador;
+    }
 
-	public void setDataRegistro(Date dataRegistro) {
-		this.dataRegistro = dataRegistro;
-	}
+    public void setLoginOperador(String loginOperador) {
+        this.loginOperador = loginOperador;
+    }
+
+    public String getLoginRegistro() {
+        return loginRegistro;
+    }
+
+    public void setLoginRegistro(String loginRegistro) {
+        this.loginRegistro = loginRegistro;
+    }
+
+    public String getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public Date getDataRegistro() {
+        return dataRegistro;
+    }
+
+    public void setDataRegistro(Date dataRegistro) {
+        this.dataRegistro = dataRegistro;
+    }
+
+    public String getLoginGuru() {
+        return loginGuru;
+    }
+
+    public void setLoginGuru(String loginGuru) {
+        this.loginGuru = loginGuru;
+    }
+
 }

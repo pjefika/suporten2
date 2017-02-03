@@ -24,67 +24,84 @@ import vraptor_suporten2.model.viewmodel.Relatorio;
 
 @Controller
 @RequestScoped
-public class RelatorioController extends AbstractCrudController{
+public class RelatorioController extends AbstractCrudController {
 
-                @Inject
-                private AtendimentoDAO dao;
+    @Inject
+    private AtendimentoDAO dao;
 
-                public RelatorioController() {
+    public RelatorioController() {
 
+    }
+
+    @Admin
+    public void create() {
+    }
+
+    @Admin
+    public void add(@Valid Relatorio r) throws IOException {
+
+        validation.onErrorForwardTo(this.getClass()).create();
+
+        List<Atendimento> lelist = dao.listar(r);
+
+        List<Colaborador> colabList;
+
+        List<Colaborador> colabListGuru;
+
+        colabList = new ArrayList<Colaborador>();
+
+        colabListGuru = new ArrayList<Colaborador>();
+
+        for (Atendimento atendimento : lelist) {
+
+            URL lelink = new URL("http://efika/web/services/colaborador/?login=" + atendimento.getLoginOperador());
+            BufferedReader in = new BufferedReader(new InputStreamReader(lelink.openStream()));
+
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                if (!colabList.contains(dexmlpraobj(inputLine))) {
+                    colabList.add(dexmlpraobj(inputLine));
                 }
+            }
 
-                @Admin
-                public void create() {
-                }
+            in.close();
+        }
 
-                @Admin
-                public void add(@Valid Relatorio r) throws IOException{
-                               
-                               validation.onErrorForwardTo(this.getClass()).create();
-                               
-                               List<Atendimento> lelist =  dao.listar(r);
-                               
-                               List<Colaborador> colabList;
-                               
-                               colabList = new ArrayList<Colaborador>();
-                                                         
-                               for (Atendimento atendimento : lelist) {
-                            	   
-                            	   URL lelink = new URL("http://efika/web/services/colaborador/?login="+atendimento.getLoginOperador());
-                                   BufferedReader in = new BufferedReader(new InputStreamReader(lelink.openStream()));
-                                   
-                                   String inputLine;
-                                   while((inputLine = in.readLine()) != null)
-                                	
-                                   if(!colabList.contains(dexmlpraobj(inputLine))){
-                                	   colabList.add(dexmlpraobj(inputLine));   
-                                   }
-	                                   
-                                   in.close();
-                                   
-                                   
-                               }
+        for (Atendimento atendimento : lelist) {
 
-                               result.include("colaboradores", colabList);
-                               result.include("atendimentos", lelist);
+            URL lelink = new URL("http://efika/web/services/colaborador/?login=" + atendimento.getLoginGuru());
+            BufferedReader in = new BufferedReader(new InputStreamReader(lelink.openStream()));
+
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                if (!colabListGuru.contains(dexmlpraobj(inputLine))) {
+                    colabListGuru.add(dexmlpraobj(inputLine));
                 }
-                
-                public Colaborador dexmlpraobj(String xml){
-                	
-                	   JAXBContext jaxbContext;
-						try {
-							jaxbContext = JAXBContext.newInstance(Colaborador.class);
-							Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-							
-                           StringReader reader = new StringReader(xml);
-                           Colaborador colab = (Colaborador) unmarshaller.unmarshal(reader);
-                           return colab;
-						} catch (JAXBException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-							return null;
-						}
-                	
-                }
+            }
+
+            in.close();
+        }
+
+        result.include("colaboradoresGuru", colabListGuru);
+        result.include("colaboradores", colabList);
+        result.include("atendimentos", lelist);
+    }
+
+    public Colaborador dexmlpraobj(String xml) {
+
+        JAXBContext jaxbContext;
+        try {
+            jaxbContext = JAXBContext.newInstance(Colaborador.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+            StringReader reader = new StringReader(xml);
+            Colaborador colab = (Colaborador) unmarshaller.unmarshal(reader);
+            return colab;
+        } catch (JAXBException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }
-

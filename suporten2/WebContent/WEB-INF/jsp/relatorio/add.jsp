@@ -18,6 +18,8 @@
             <th>Solução Indevido</th>
             <th>Login Operador</th>
             <th>Login Guru</th>
+            <th>Nome Guru</th>
+            <th>Gestor Imediato Guru</th>
             <th>Login Registro</th>
             <th>Terminal</th>
             <th>Data</th>
@@ -46,6 +48,12 @@
                 </td>
                 <td>${at.loginOperador}</td>
                 <td>${at.loginGuru}</td>
+                <c:forEach items="${colaboradoresGuru}" var="colG">
+                    <c:if test="${colG.matricula == at.loginOperador}">
+                        <td>${colG.nome}</td>
+                        <td>${colG.supervisor}</td>	
+                    </c:if>
+                </c:forEach>
                 <td>${at.loginRegistro}</td>
                 <td>${at.terminal}</td>
                 <td><fmt:formatDate type="both" dateStyle="short"

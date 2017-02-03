@@ -67,12 +67,17 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-8">
-                        <label for="tAtividade">Tipo Atividade: </label> 
-                        <select class="form-control" name="a.tipoAtividade" id="tAtividade">
-                            <option value="" selected="selected" disabled="disabled">Selecione</option>
-                            <option value="BD/TT">BD/TT</option>
-                            <option value="Alta/BA">Alta/BA</option>
-                        </select>
+                        <label>Tipo Atividade: </label> 
+                        <br/>
+                        <div class="radio-inline">
+                            <input type="radio" value="BD/TT" name="a.tipoAtividade"/>
+                            BD/TT
+                        </div>
+                        <div class="radio-inline">
+                            <input type="radio" value="Alta/BA" name="a.tipoAtividade"/>
+                            Alta/BA
+                        </div>
+
                     </div>
                     <div class="col-md-4">
                     </div>

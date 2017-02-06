@@ -80,6 +80,13 @@
 
                     </div>
                     <div class="col-md-4">
+                        <c:if test="${not empty errors.from('a.tipoAtividade')}">
+                            <small> <span class="alert alert-warning validator"> <span
+                                        class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    ${errors.from('a.tipoAtividade')}
+                                </span>
+                            </small>
+                        </c:if>	                        
                     </div>
                 </div>
             </div>

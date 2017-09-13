@@ -30,7 +30,7 @@ public class RedeDAO extends AbstractDAO{
 	public void excluir(Rede r) throws Exception{
 		
 		/**
-		 * Validação de Quebra de Constraint
+		 * ValidaÃ§Ã£o de Quebra de Constraint
 		 */
 		if(((Rede) buscarPorId(r)).getMacroMotivos().size() == 0){
 			super.excluir(r);

@@ -53,7 +53,7 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 				
 			for (Solucao solucao : lelist) {
 				if(solucao.getMotivo().getId() == s.getMotivo().getId()){
-					result.include("mensagemFalha", s.getClass().getSimpleName() + ": " + s.getNome() + " já existente!");
+					result.include("mensagemFalha", s.getClass().getSimpleName() + ": " + s.getNome() + " jï¿½ existente!");
 					result.forwardTo(this).create();
 					return;
 				}
@@ -84,7 +84,7 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 			
 			try {
 				dao.excluir(solucao);
-				result.include("mensagem", solucao.getClass().getSimpleName() + " " + solucao.getNome() + " excluído.");
+				result.include("mensagem", solucao.getClass().getSimpleName() + " " + solucao.getNome() + " excluÃ­do.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
 			}finally {
@@ -137,7 +137,7 @@ public class SolucaoController extends AbstractCrudController implements EntityC
 			if(md != null && md.getId() == s.getId()){
 				
 				dao.editar(s);
-				result.include("mensagem", "Alterações realizadas com sucesso!");
+				result.include("mensagem", "AlteraÃ§Ãµes realizadas com sucesso!");
 				result.use(Results.logic()).redirectTo(this.getClass()).list();
 				
 			}else{

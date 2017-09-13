@@ -43,7 +43,7 @@ public class UsuarioController {
 				
 			}else{
 				
-				result.include("mensagemFalha", "Credênciais incorrentas.");
+				result.include("mensagemFalha", "CredÃªnciais incorrentas.");
 				result.forwardTo(this).create();
 			}
 			

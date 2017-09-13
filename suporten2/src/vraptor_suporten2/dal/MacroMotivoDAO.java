@@ -30,7 +30,7 @@ public class MacroMotivoDAO extends AbstractDAO{
 	public void excluir(MacroMotivo m) throws Exception{
 		
 		/**
-		 * Validação de Quebra de Constraint
+		 * ValidaÃ§Ã£o de Quebra de Constraint
 		 */
 		MacroMotivo macro = (MacroMotivo) buscarPorId(m);
 		

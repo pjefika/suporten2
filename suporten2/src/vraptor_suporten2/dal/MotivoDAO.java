@@ -30,14 +30,14 @@ public class MotivoDAO extends AbstractDAO{
 	public void excluir(Motivo m) throws Exception{
 		
 		/**
-		 * Validação de Quebra de Constraint
+		 * ValidaÃ§Ã£o de Quebra de Constraint
 		 */
 		Motivo motivo = (Motivo) buscarPorId(m);
 		
 		if(motivo.getSolucaos().size() == 0){
 			super.excluir(m);
 		}else{
-			throw new Exception("Falha ao excluir " + m.getClass().getSimpleName() + ", existem Soluções associadas.");
+			throw new Exception("Falha ao excluir " + m.getClass().getSimpleName() + ", existem SoluÃ§Ãµes associadas.");
 		}
 	}
 	

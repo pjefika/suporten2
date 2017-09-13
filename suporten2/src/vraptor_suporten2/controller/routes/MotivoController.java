@@ -57,7 +57,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 			for (Motivo motivo : lelist) {
 				
 				if(motivo.getMacroMotivo().getId() == m.getMacroMotivo().getId()){
-					result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " já existente!");
+					result.include("mensagemFalha", m.getClass().getSimpleName() + ": " + m.getNome() + " jÃ¡ existente!");
 					result.forwardTo(this).create();
 					return;
 				}
@@ -90,7 +90,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 			
 			try {
 				dao.excluir(motivo);
-				result.include("mensagem", m.getClass().getSimpleName() + " " + m.getNome() + " excluído.");
+				result.include("mensagem", m.getClass().getSimpleName() + " " + m.getNome() + " excluido.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
 			}finally {
@@ -149,7 +149,7 @@ public class MotivoController extends AbstractCrudController implements EntityCr
 			if(md != null && md.getId() == m.getId()){
 
 				dao.editar(m);
-				result.include("mensagem", "Alterações realizadas com sucesso!");
+				result.include("mensagem", "AlteraÃ§Ãµes realizadas com sucesso!");
 				result.use(Results.logic()).redirectTo(this.getClass()).list();
 
 			}else{

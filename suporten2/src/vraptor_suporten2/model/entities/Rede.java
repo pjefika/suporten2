@@ -15,14 +15,14 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="SUPORTEN2_REDE")
+@Table(name="SUPORTECG_REDE")
 public class Rede implements EntityCrudInterface, Comparable<Rede>{
 	
 	@Id
 	@GeneratedValue
 	private Integer id;
 	
-	@NotEmpty(message="Campo obrigatório!")
+	@NotEmpty(message="Campo obrigatÃ³rio!")
 	private String nome;
 	
 	private Boolean ativo;

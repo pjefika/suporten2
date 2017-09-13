@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "SuporteN2_Atendimento")
+@Table(name = "SUPORTECG_Atendimento")
 public class Atendimento {
 
     @Id
@@ -22,22 +22,22 @@ public class Atendimento {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @NotNull(message = "Campo obrigat髍io")
+    @NotNull(message = "Campo obrigat贸rio")
     private Solucao solucao;
     
     //@Pattern(regexp = "(\\w{1})\\d{7}", message = "Utilize o formato: G0042204/A0042204")
-    @NotEmpty(message = "Campo obrigat髍io")
+    @NotEmpty(message = "Campo obrigat贸rio")
     private String loginOperador;
 
     private String loginGuru;
 
-    @NotNull(message = "Campo obrigat髍io")
+    @NotNull(message = "Campo obrigat贸rio")
     private String tipoAtividade;
 
-    @NotEmpty(message = "Campo obrigat髍io")
+    @NotEmpty(message = "Campo obrigat贸rio")
     private String loginRegistro;
 
-    @NotEmpty(message = "Campo obrigat髍io")
+    @NotEmpty(message = "Campo obrigat贸rio")
     private String terminal;
 
     @Lob

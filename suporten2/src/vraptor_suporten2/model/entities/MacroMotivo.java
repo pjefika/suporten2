@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="SuporteN2_MacroMotivo")
+@Table(name="SUPORTECG_MacroMotivo")
 public class MacroMotivo implements EntityCrudInterface, Comparable<MacroMotivo>{
 	
 	@Id

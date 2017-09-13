@@ -57,7 +57,7 @@ public class RedeController extends AbstractCrudController implements EntityCrud
 			
 			try {
 				dao.excluir(r);
-				result.include("mensagem", r.getClass().getSimpleName() + " " + rede.getNome() + " excluÌda.");
+				result.include("mensagem", r.getClass().getSimpleName() + " " + rede.getNome() + " exclu√≠da.");
 			} catch (Exception e) {
 				result.include("mensagemFalha", e.getMessage());
 			}finally {
@@ -95,7 +95,7 @@ public class RedeController extends AbstractCrudController implements EntityCrud
 				
 			}else{
 				
-				result.include("mensagemFalha", r.getClass().getSimpleName() + ": " + r.getNome() + " j· existente!");
+				result.include("mensagemFalha", r.getClass().getSimpleName() + ": " + r.getNome() + " j√° existente!");
 				result.forwardTo(this).create();
 				
 			}

@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="SuporteN2_Motivo")
+@Table(name="SUPORTECG_Motivo")
 public class Motivo implements EntityCrudInterface, Comparable<Motivo>{
 	
 	@Id

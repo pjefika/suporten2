@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "SuporteN2_Solucao")
+@Table(name = "SUPORTECG_Solucao")
 public class Solucao implements EntityCrudInterface, Comparable<Solucao> {
 
     @Id
@@ -26,7 +26,7 @@ public class Solucao implements EntityCrudInterface, Comparable<Solucao> {
     private Boolean indevido = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @NotNull(message = "Não pode ser nulo.")
+    @NotNull(message = "NÃ£o pode ser nulo.")
     private Motivo motivo;
 
     public Solucao() {

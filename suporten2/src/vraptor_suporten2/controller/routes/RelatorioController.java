@@ -37,7 +37,7 @@ public class RelatorioController extends AbstractCrudController {
     public void create() {
     }
 
-    @Admin
+//    @Admin
     public void add(@Valid Relatorio r) throws IOException {
 
         validation.onErrorForwardTo(this.getClass()).create();
